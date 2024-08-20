@@ -6,6 +6,8 @@ compose-bom = "2024.05.00"
 activity-compose = "1.9.0"
 tv-material = "1.0.0-rc02"
 navigation-compose = "2.7.7"
+compose-ui = "1.6.8"
+coil-compose = "2.6.0"
 
 
 
@@ -15,6 +17,8 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 androidx-tv-material = { module = "androidx.tv:tv-material", version.ref = "tv-material" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation-compose" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-ui" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
 
 
 [plugins]
