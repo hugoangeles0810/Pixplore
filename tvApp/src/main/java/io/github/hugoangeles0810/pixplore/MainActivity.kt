@@ -13,6 +13,7 @@ import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import io.github.hugoangeles0810.pixplore.presentation.theme.PixploreTheme
+import io.github.hugoangeles0810.pixplore.presentation.theme.TvApp
 
 class MainActivity : ComponentActivity() {
 
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
                     CompositionLocalProvider(
                         LocalContentColor provides MaterialTheme.colorScheme.onSurface
                     ) {
-                        Text(text = "👋 Hi! I'm Pixplore")
+                        TvApp()
                     }
                 }
             }
