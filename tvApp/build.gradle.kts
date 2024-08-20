@@ -44,4 +44,6 @@ dependencies {
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.tv.material) // material components for tv
+
+    implementation(libs.androidx.navigation.compose)
 }
