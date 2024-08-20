@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -14,6 +15,10 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+    }
+
+    buildFeatures {
+        compose = true
     }
 
     buildTypes {
@@ -35,6 +40,7 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
 }
