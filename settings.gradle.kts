@@ -20,5 +20,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Pixplore"
-include(":app")
+include(":tvApp")
  
