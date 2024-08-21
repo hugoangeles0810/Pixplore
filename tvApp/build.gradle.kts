@@ -1,8 +1,15 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
 }
+
+val localProperties = gradleLocalProperties(rootDir, project.providers)
 
 android {
     namespace = "io.github.hugoangeles0810.pixplore"
@@ -14,11 +21,14 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        buildConfigField("String", "BASE_URL", properties["baseUrl"].toString())
+        buildConfigField("String", "UNSPLASH_API_KEY", localProperties.getOrFail("unsplashApiKey"))
 
     }
 
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     buildTypes {
@@ -48,4 +58,15 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
 
     implementation(libs.coil.compose)
+
+    implementation(libs.retrofit)
+
+    // Hilt
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.navigation.compose)
+    ksp(libs.hilt.compiler)
+}
+
+fun Properties.getOrFail(key: String): String {
+    return getProperty(key) ?: throw IllegalStateException("You should define $key in local.properties")
 }
