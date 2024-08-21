@@ -5,12 +5,10 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.hugoangeles0810.pixplore.data.entities.Photo
 import io.github.hugoangeles0810.pixplore.domain.usecase.FetchPhotos
-import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,17 +16,19 @@ class HomeViewModel @Inject constructor(
     private val fetchPhotos: FetchPhotos
 ) : ViewModel() {
 
-    val uiState: StateFlow<HomeScreenUiState> = flow {
-        emit(fetchPhotos())
-    }.map {
-        HomeScreenUiState.Ready(it) as HomeScreenUiState
-    }.catch {
-        emit(HomeScreenUiState.Error)
-    }.stateIn(
-        scope = viewModelScope,
-        started = SharingStarted.WhileSubscribed(5_000),
-        initialValue = HomeScreenUiState.Loading
-    )
+    private val _uiState = MutableStateFlow<HomeScreenUiState>(HomeScreenUiState.Loading)
+    val uiState: StateFlow<HomeScreenUiState> = _uiState.asStateFlow()
+
+    fun initialize() {
+        viewModelScope.launch {
+            try {
+                val photos = fetchPhotos()
+                _uiState.compareAndSet(_uiState.value, HomeScreenUiState.Ready(photos))
+            } catch (t : Throwable) {
+                _uiState.compareAndSet(_uiState.value, HomeScreenUiState.Error)
+            }
+        }
+    }
 
 }
 

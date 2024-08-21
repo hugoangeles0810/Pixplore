@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,6 +49,9 @@ fun HomeScreen(
                 // TODO: Add error ui
             }
         }
+    }
 
+    LaunchedEffect(Unit) {
+        viewModel.initialize()
     }
 }
