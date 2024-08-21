@@ -1,4 +1,4 @@
-package io.github.hugoangeles0810.pixplore.data.dtos
+package io.github.hugoangeles0810.pixplore.infrastructure.dtos
 
 import com.google.gson.annotations.SerializedName
 
