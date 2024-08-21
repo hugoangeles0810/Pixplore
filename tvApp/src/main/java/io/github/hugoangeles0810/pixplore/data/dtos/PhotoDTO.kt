@@ -9,7 +9,8 @@ data class PhotoDTO(
     val width: Int,
     val height: Int,
     val color: String?,
-    val urls: Urls
+    val urls: Urls,
+    val user: User
 ) {
 
     data class Urls(
@@ -18,5 +19,9 @@ data class PhotoDTO(
         val regular: String?,
         val small: String?,
         val thumb: String?
+    )
+
+    data class User(
+        val username: String
     )
 }
