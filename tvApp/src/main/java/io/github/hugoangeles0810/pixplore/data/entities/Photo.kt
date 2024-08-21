@@ -1,4 +1,4 @@
-package io.github.hugoangeles0810.pixplore.domain.entities
+package io.github.hugoangeles0810.pixplore.data.entities
 
 data class Photo(
     val id: String,

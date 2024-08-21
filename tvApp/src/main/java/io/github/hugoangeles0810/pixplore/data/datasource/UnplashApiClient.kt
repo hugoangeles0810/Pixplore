@@ -1,10 +1,10 @@
-package io.github.hugoangeles0810.pixplore.data
+package io.github.hugoangeles0810.pixplore.data.datasource
 
-import io.github.hugoangeles0810.pixplore.data.dtos.PhotoDTO
+import io.github.hugoangeles0810.pixplore.data.datasource.dtos.PhotoDTO
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface UnplashApiService {
+interface UnplashApiClient {
 
     @GET("photos/random")
     suspend fun fetchRandomPhotos(

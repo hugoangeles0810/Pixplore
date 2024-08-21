@@ -14,6 +14,10 @@ okhttp = "4.12.0"
 retrofit = "2.11.0"
 hilt-android = "2.51.1"
 ksp = "2.0.0-1.0.21"
+mockk = "1.13.12"
+junit = "4.13.2"
+kotlin-coroutines = "1.8.1"
+
 
 
 
@@ -35,6 +39,10 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit" , version.ref =
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson" , version.ref = "retrofit" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt-android" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt-android" }
+mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
+mockk-agent = { group = "io.mockk", name = "mockk-agent", version.ref = "mockk" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+kotlin-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
 
 
 [plugins]
