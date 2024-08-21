@@ -1,6 +1,6 @@
-package io.github.hugoangeles0810.pixplore.infrastructure
+package io.github.hugoangeles0810.pixplore.data.datasource
 
-import io.github.hugoangeles0810.pixplore.infrastructure.dtos.PhotoDTO
+import io.github.hugoangeles0810.pixplore.data.datasource.dtos.PhotoDTO
 import retrofit2.http.GET
 import retrofit2.http.Query
 

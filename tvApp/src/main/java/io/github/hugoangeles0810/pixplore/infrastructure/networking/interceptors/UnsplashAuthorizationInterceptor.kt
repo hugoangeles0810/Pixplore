@@ -1,4 +1,4 @@
-package io.github.hugoangeles0810.pixplore.infrastructure.interceptors
+package io.github.hugoangeles0810.pixplore.infrastructure.networking.interceptors
 
 import io.github.hugoangeles0810.pixplore.BuildConfig.UNSPLASH_API_KEY
 import okhttp3.Interceptor
