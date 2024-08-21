@@ -6,19 +6,16 @@ data class PhotoDTO(
     val id: String,
     @SerializedName("created_at")
     val createdAt: String,
-    val width: Int,
-    val height: Int,
-    val color: String?,
     val urls: Urls,
     val user: User
 ) {
 
     data class Urls(
-        val raw: String?,
-        val full: String?,
-        val regular: String?,
-        val small: String?,
-        val thumb: String?
+        val raw: String? = null,
+        val full: String? = null,
+        val regular: String? = null,
+        val small: String? = null,
+        val thumb: String? = null
     )
 
     data class User(

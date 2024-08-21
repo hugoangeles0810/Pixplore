@@ -71,6 +71,11 @@ dependencies {
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
     ksp(libs.hilt.compiler)
+
+    testImplementation(libs.mockk.android)
+    testImplementation(libs.mockk.agent)
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlin.coroutines.test)
 }
 
 fun Properties.getOrFail(key: String): String {

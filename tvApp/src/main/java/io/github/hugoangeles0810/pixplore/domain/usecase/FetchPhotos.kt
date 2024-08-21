@@ -12,6 +12,6 @@ class FetchPhotos @Inject constructor(
 ) {
 
     suspend operator fun invoke(): List<Photo> {
-        return photoRepository.fetchPhotos(Orientation.Landscaped, count = PAGE_SIZE)
+        return photoRepository.fetchPhotos(Orientation.Landscape, count = PAGE_SIZE)
     }
 }
