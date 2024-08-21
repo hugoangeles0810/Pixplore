@@ -11,10 +11,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.MaterialTheme
-import androidx.tv.material3.Text
+import dagger.hilt.android.AndroidEntryPoint
 import io.github.hugoangeles0810.pixplore.presentation.theme.PixploreTheme
 import io.github.hugoangeles0810.pixplore.presentation.theme.TvApp
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
