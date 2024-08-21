@@ -1,7 +1,11 @@
 package io.github.hugoangeles0810.pixplore.data.dtos
 
+import com.google.gson.annotations.SerializedName
+
 data class PhotoDTO(
     val id: String,
+    @SerializedName("created_at")
+    val createdAt: String,
     val width: Int,
     val height: Int,
     val color: String?,

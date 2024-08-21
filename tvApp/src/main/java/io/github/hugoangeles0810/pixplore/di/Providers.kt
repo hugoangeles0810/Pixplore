@@ -12,6 +12,7 @@ import io.github.hugoangeles0810.pixplore.data.UnplashApiService
 import io.github.hugoangeles0810.pixplore.data.interceptors.UnsplashAuthorizationInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -37,6 +38,7 @@ class ProvidersModule {
     fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BuildConfig.BASE_URL)
             .build()
     }

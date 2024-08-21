@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
 
     // Hilt
     implementation(libs.hilt.android)
