@@ -8,7 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.github.hugoangeles0810.pixplore.BuildConfig
-import io.github.hugoangeles0810.pixplore.infrastructure.UnplashApiService
+import io.github.hugoangeles0810.pixplore.infrastructure.UnplashApiClient
 import io.github.hugoangeles0810.pixplore.infrastructure.interceptors.UnsplashAuthorizationInterceptor
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -61,8 +61,8 @@ class ProvidersModule {
 
     @Provides
     @Singleton
-    fun providesUnsplashApiService(retrofit: Retrofit): UnplashApiService {
-        return retrofit.create(UnplashApiService::class.java)
+    fun providesUnsplashApiService(retrofit: Retrofit): UnplashApiClient {
+        return retrofit.create(UnplashApiClient::class.java)
     }
 
     @Provides

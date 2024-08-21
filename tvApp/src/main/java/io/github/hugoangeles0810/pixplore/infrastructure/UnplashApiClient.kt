@@ -4,7 +4,7 @@ import io.github.hugoangeles0810.pixplore.infrastructure.dtos.PhotoDTO
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface UnplashApiService {
+interface UnplashApiClient {
 
     @GET("photos/random")
     suspend fun fetchRandomPhotos(
