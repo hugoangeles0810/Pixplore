@@ -11,6 +11,9 @@ import io.github.hugoangeles0810.pixplore.BuildConfig
 import io.github.hugoangeles0810.pixplore.data.UnplashApiService
 import io.github.hugoangeles0810.pixplore.data.interceptors.UnsplashAuthorizationInterceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
+import okhttp3.logging.HttpLoggingInterceptor.Level.NONE
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -26,11 +29,22 @@ class ProvidersModule {
 
     @Provides
     @Singleton
-    fun providesOkHttpClient(authorizationInterceptor: UnsplashAuthorizationInterceptor): OkHttpClient {
+    fun providesOkHttpClient(
+        authorizationInterceptor: UnsplashAuthorizationInterceptor,
+        loggingInterceptor: HttpLoggingInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
             .addNetworkInterceptor(authorizationInterceptor)
+            .addNetworkInterceptor(loggingInterceptor)
             .build()
 
+    }
+
+    @Provides
+    fun providesLoggingInterceptor(): HttpLoggingInterceptor {
+        val logging = HttpLoggingInterceptor()
+        logging.level = if (BuildConfig.DEBUG) BODY else NONE
+        return logging
     }
 
     @Provides

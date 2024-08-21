@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface UnplashApiService {
 
-    @GET
+    @GET("photos/random")
     suspend fun fetchRandomPhotos(
         @Query("orientation") orientation: String,
         @Query("count") count: Int

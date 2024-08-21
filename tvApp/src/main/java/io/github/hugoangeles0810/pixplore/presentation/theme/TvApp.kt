@@ -65,24 +65,23 @@ fun TvApp() {
 
         NavHost(
             navController = navController,
-            startDestination = Screens.Home.route,
-            builder = {
-                composable(
-                    route = Screens.Home.route
-                ) {
-                    HomeScreen()
-                }
-                composable(
-                    route = Screens.Search.route
-                ) {
-                    SearchScreen()
-                }
-                composable(
-                    route = Screens.About.route
-                ) {
-                    AboutScreen()
-                }
+            startDestination = Screens.Home.route
+        ) {
+            composable(
+                route = Screens.Home.route
+            ) {
+                HomeScreen()
             }
-        )
+            composable(
+                route = Screens.Search.route
+            ) {
+                SearchScreen()
+            }
+            composable(
+                route = Screens.About.route
+            ) {
+                AboutScreen()
+            }
+        }
     }
 }

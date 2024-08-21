@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -26,14 +27,15 @@ import coil.compose.AsyncImage
 import io.github.hugoangeles0810.pixplore.presentation.theme.PixploreTheme
 
 private const val CARD_ASPECT_RATIO = 16f / 9f
+private const val SINGLE_LINE = 1
 
 @Composable
-fun PictureCard(
+fun PhotoCard(
     modifier: Modifier = Modifier,
     itemWidth: Dp = 268.dp,
-    title: String,
-    subtitle: String,
-    imageUrl: String,
+    user: String,
+    createdAt: String,
+    url: String,
     onClick: () -> Unit = {}
 ) {
 
@@ -56,8 +58,8 @@ fun PictureCard(
         ),
         image = {
             AsyncImage(
-                model = imageUrl,
-                contentDescription = title,
+                model = url,
+                contentDescription = user,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxSize()
@@ -66,15 +68,20 @@ fun PictureCard(
         title = {
             Column {
                 Text(
-                    text = title,
+                    text = user,
                     style = MaterialTheme.typography.headlineSmall,
+                    overflow = TextOverflow.Ellipsis,
+                    minLines = SINGLE_LINE,
+                    maxLines = SINGLE_LINE,
                     modifier = Modifier.padding(
                         start = 24.dp,
                         end = 24.dp
                     )
                 )
                 Text(
-                    text = subtitle,
+                    text = createdAt,
+                    minLines = SINGLE_LINE,
+                    maxLines = SINGLE_LINE,
                     modifier = Modifier
                         .graphicsLayer { alpha = 0.6f }
                         .padding(
@@ -89,13 +96,13 @@ fun PictureCard(
 
 @Preview(device = Devices.TV_1080p)
 @Composable
-fun ProfileScreenPreview() {
+fun PhotoCardPreview() {
     PixploreTheme {
         Box(modifier = Modifier.background(MaterialTheme.colorScheme.surface)) {
-            PictureCard(
-                title = "Title",
-                subtitle = "01/01/1992",
-                imageUrl = ""
+            PhotoCard(
+                user = "Title",
+                createdAt = "01/01/1992",
+                url = ""
             )
         }
     }
