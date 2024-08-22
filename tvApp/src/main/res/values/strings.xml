@@ -4,4 +4,7 @@
     <string name="home_screen_name">Home</string>
     <string name="search_screen_name">Search</string>
     <string name="about_screen_name">About</string>
+
+    <string name="loading_message">Loading …</string>
+    <string name="error_message">Ops! Something went wrong.</string>
 </resources>

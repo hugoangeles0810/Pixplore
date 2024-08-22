@@ -7,7 +7,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.tv.material3.LocalContentColor
 import androidx.tv.material3.MaterialTheme
@@ -26,8 +25,7 @@ class MainActivity : ComponentActivity() {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(MaterialTheme.colorScheme.surface),
-                    contentAlignment = Alignment.Center
+                        .background(MaterialTheme.colorScheme.surface)
                 ) {
                     CompositionLocalProvider(
                         LocalContentColor provides MaterialTheme.colorScheme.onSurface

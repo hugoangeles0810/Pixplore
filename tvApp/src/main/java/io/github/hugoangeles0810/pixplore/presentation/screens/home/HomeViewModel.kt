@@ -25,6 +25,7 @@ class HomeViewModel @Inject constructor(
                 val photos = fetchPhotos()
                 _uiState.compareAndSet(_uiState.value, HomeScreenUiState.Ready(photos))
             } catch (t : Throwable) {
+                t.printStackTrace()
                 _uiState.compareAndSet(_uiState.value, HomeScreenUiState.Error)
             }
         }

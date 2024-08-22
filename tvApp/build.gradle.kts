@@ -50,6 +50,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.compose.runtime.base)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.runtime.compose)
@@ -58,7 +60,11 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.tv.material) // material components for tv
     implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.androidx.compose.foundation.base)
+    implementation(libs.androidx.compose.ui.base)
     debugImplementation(libs.androidx.compose.ui.tooling)
+    implementation(libs.androidx.compose.ui.tooling.preview)
 
     implementation(libs.coil.compose)
 
