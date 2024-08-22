@@ -1,6 +1,5 @@
 package io.github.hugoangeles0810.pixplore.data.datasource
 
-import io.github.hugoangeles0810.pixplore.data.entities.Orientation
 import io.mockk.clearAllMocks
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -27,8 +26,8 @@ class RemotePhotoDatasourceTest {
 
     @Test
     fun `fetch photos should invoke api client with expected params`() = runTest {
-        photoDatasource.fetchPhotos(orientation = Orientation.Landscape, count = 10)
+        photoDatasource.fetchPhotos(count = 10, page = 1)
 
-        coVerify { apiClient.fetchRandomPhotos(orientation = "landscape", count = 10) }
+        coVerify { apiClient.fetchRandomPhotos(count = 10, page = 1) }
     }
 }

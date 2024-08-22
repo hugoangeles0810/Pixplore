@@ -61,6 +61,9 @@ dependencies {
     implementation(libs.androidx.tv.material) // material components for tv
     implementation(libs.androidx.navigation.compose)
 
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
+
     implementation(libs.androidx.compose.foundation.base)
     implementation(libs.androidx.compose.ui.base)
     debugImplementation(libs.androidx.compose.ui.tooling)

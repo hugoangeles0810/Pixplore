@@ -28,7 +28,7 @@ import coil.compose.AsyncImage
 import io.github.hugoangeles0810.pixplore.R
 import io.github.hugoangeles0810.pixplore.presentation.theme.PixploreTheme
 
-private const val CARD_ASPECT_RATIO = 16f / 9f
+const val CARD_ASPECT_RATIO = 16f / 9f
 private const val SINGLE_LINE = 1
 
 @Composable
@@ -100,7 +100,7 @@ fun PhotoCard(
 
 @Preview(device = Devices.TV_1080p)
 @Composable
-fun PhotoCardPreview() {
+private fun PhotoCardPreview() {
     PixploreTheme {
         Box(modifier = Modifier.background(MaterialTheme.colorScheme.surface)) {
             PhotoCard(
