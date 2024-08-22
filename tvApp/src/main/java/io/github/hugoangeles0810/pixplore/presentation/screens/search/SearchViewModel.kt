@@ -25,10 +25,11 @@ class SearchViewModel @Inject constructor(
     fun query(term: String) {
         viewModelScope.launch {
             try {
+                _uiState.compareAndSet(_uiState.value, SearchScreenUiState.Loading)
                 val photos = fetchPhotos(term = term)
                 _uiState.compareAndSet(_uiState.value, SearchScreenUiState.Done(photos))
             } catch (t: Throwable) {
-                _uiState.compareAndSet(_uiState.value, SearchScreenUiState.Done(flowOf(PagingData.empty())))
+                _uiState.compareAndSet(_uiState.value, SearchScreenUiState.Error)
             }
         }
     }
@@ -36,6 +37,7 @@ class SearchViewModel @Inject constructor(
 
 sealed interface SearchScreenUiState {
     data object Loading : SearchScreenUiState
+    data object Error : SearchScreenUiState
     data class Done(
         val photos: Flow<PagingData<Photo>>
     ): SearchScreenUiState

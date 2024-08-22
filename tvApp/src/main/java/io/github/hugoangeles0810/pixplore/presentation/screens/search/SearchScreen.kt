@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.compose.collectAsLazyPagingItems
+import io.github.hugoangeles0810.pixplore.presentation.components.Error
 import io.github.hugoangeles0810.pixplore.presentation.components.Loading
 import io.github.hugoangeles0810.pixplore.presentation.components.PhotoGrid
 import io.github.hugoangeles0810.pixplore.presentation.components.SearchBar
@@ -42,6 +43,9 @@ fun SearchScreen(
             when (val state = uiState) {
                 is SearchScreenUiState.Loading -> {
                     Loading(modifier = Modifier.fillMaxSize())
+                }
+                is SearchScreenUiState.Error -> {
+                    Error(modifier = Modifier.fillMaxSize())
                 }
                 is SearchScreenUiState.Done -> {
                     val lazyPagingItems = state.photos.collectAsLazyPagingItems()
