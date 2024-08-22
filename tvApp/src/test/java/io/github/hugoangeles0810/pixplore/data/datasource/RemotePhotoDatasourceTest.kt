@@ -27,8 +27,15 @@ class RemotePhotoDatasourceTest {
 
     @Test
     fun `fetch photos should invoke api client with expected params`() = runTest {
-        photoDatasource.fetchPhotos(count = 10, page = 1)
+        photoDatasource.fetchPhotos(term = "", count = 10, page = 1)
 
-        coVerify { apiClient.fetchRandomPhotos(count = 10, page = 1) }
+        coVerify { apiClient.fetchPhotosFromEditorial(count = 10, page = 1) }
+    }
+
+    @Test
+    fun `fetch photos with a term should invoke api client with expected params`() = runTest {
+        photoDatasource.fetchPhotos(term = "term", count = 10, page = 1)
+
+        coVerify { apiClient.searchPhotos(term = "term", count = 10, page = 1) }
     }
 }
