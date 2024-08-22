@@ -7,9 +7,11 @@ activity-compose = "1.9.1"
 tv-material = "1.0.0-rc02"
 navigation-compose = "2.7.7"
 hilt-navigation-compose = "1.2.0"
-compose-ui = "1.6.8"
+compose-foundation = "1.7.0-beta02"
+compose-ui = "1.7.0-beta02"
+compose-runtime = "1.7.0-beta02"
 coil-compose = "2.6.0"
-lifecycle-runtime-ktx = "2.8.4"
+lifecycle-runtime-ktx = "2.8.1"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
 hilt-android = "2.51.1"
@@ -25,10 +27,14 @@ kotlin-coroutines = "1.8.1"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
+androidx-compose-foundation-base = { module = "androidx.compose.foundation:foundation", version.ref = "compose-foundation" }
 androidx-tv-material = { module = "androidx.tv:tv-material", version.ref = "tv-material" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation-compose" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
+androidx-compose-runtime-base = { module = "androidx.compose.runtime:runtime", version.ref = "compose-runtime" }
+androidx-compose-ui-base = { module = "androidx.compose.ui:ui", version.ref = "compose-ui" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-ui" }
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-ui" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle-runtime-ktx" }
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
