@@ -8,7 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.github.hugoangeles0810.pixplore.BuildConfig
-import io.github.hugoangeles0810.pixplore.data.datasource.UnplashApiClient
+import io.github.hugoangeles0810.pixplore.data.apiclient.UnplashApiClient
 import io.github.hugoangeles0810.pixplore.infrastructure.networking.interceptors.UnsplashAuthorizationInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

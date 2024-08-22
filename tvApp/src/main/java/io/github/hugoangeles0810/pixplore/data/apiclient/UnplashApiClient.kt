@@ -1,4 +1,4 @@
-package io.github.hugoangeles0810.pixplore.data.datasource
+package io.github.hugoangeles0810.pixplore.data.apiclient
 
 import io.github.hugoangeles0810.pixplore.data.datasource.dtos.PhotoDTO
 import retrofit2.http.GET

@@ -1,5 +1,6 @@
 package io.github.hugoangeles0810.pixplore.data.datasource
 
+import io.github.hugoangeles0810.pixplore.data.apiclient.UnplashApiClient
 import io.mockk.clearAllMocks
 import io.mockk.coVerify
 import io.mockk.mockk
