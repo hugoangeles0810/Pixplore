@@ -12,7 +12,7 @@ class FetchPhotos @Inject constructor(
     private val photoRepository: PhotoRepository
 ) {
 
-    suspend operator fun invoke(): Flow<PagingData<Photo>> {
-        return photoRepository.fetchPhotos(count = PAGE_SIZE)
+    operator fun invoke(term: String = ""): Flow<PagingData<Photo>> {
+        return photoRepository.fetchPhotos(term = term, count = PAGE_SIZE)
     }
 }

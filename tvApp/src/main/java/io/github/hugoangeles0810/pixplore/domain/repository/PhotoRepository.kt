@@ -13,11 +13,11 @@ class PhotoRepository @Inject constructor(
     private val datasource: PhotoDatasource
 ) {
 
-    suspend fun fetchPhotos(count: Int): Flow<PagingData<Photo>> {
+    fun fetchPhotos(term: String, count: Int): Flow<PagingData<Photo>> {
         return Pager(
             config = PagingConfig(pageSize = count, prefetchDistance = 3),
             pagingSourceFactory = {
-                PhotoPagingSource(datasource, count)
+                PhotoPagingSource(datasource, term, count)
             }
         ).flow
     }

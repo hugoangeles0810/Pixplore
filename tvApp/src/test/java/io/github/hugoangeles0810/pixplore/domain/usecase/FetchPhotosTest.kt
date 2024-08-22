@@ -22,6 +22,6 @@ class FetchPhotosTest {
     fun `fetch photos should request landscape orientation and a limited count`() = runTest {
         fetchPhotos()
 
-        coVerify { repository.fetchPhotos(count = 10) }
+        coVerify { repository.fetchPhotos(term = "", count = 15) }
     }
 }

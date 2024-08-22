@@ -15,7 +15,16 @@ class RemotePhotoDatasource @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : PhotoDatasource {
 
-    override suspend fun fetchPhotos(count: Int, page: Int): List<Photo> {
-        return withContext(ioDispatcher) { apiClient.fetchRandomPhotos(count, page).toEntity() }
+    override suspend fun fetchPhotos(
+        term: String,
+        count: Int,
+        page: Int
+    ): List<Photo> {
+        return withContext(ioDispatcher) {
+            if (term.isBlank())
+                apiClient.fetchPhotosFromEditorial(count, page).toEntity()
+            else
+                apiClient.searchPhotos(term, count, page).toEntity()
+        }
     }
 }

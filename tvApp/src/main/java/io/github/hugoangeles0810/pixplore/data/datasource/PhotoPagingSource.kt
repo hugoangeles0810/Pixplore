@@ -6,6 +6,7 @@ import io.github.hugoangeles0810.pixplore.data.entities.Photo
 
 class PhotoPagingSource(
     private val photoDatasource: PhotoDatasource,
+    private val term: String,
     private val pageSize: Int
 ) : PagingSource<Int, Photo>() {
 
@@ -16,7 +17,7 @@ class PhotoPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Photo> {
         return try {
             val currentPage = params.key ?: 1
-            val photos = photoDatasource.fetchPhotos(pageSize, currentPage)
+            val photos = photoDatasource.fetchPhotos(term, pageSize, currentPage)
             LoadResult.Page(
                 data = photos,
                 prevKey = (currentPage - 1).takeIf { currentPage > 1 },

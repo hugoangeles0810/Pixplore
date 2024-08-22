@@ -25,7 +25,7 @@ class SearchViewModel @Inject constructor(
     fun query(term: String) {
         viewModelScope.launch {
             try {
-                val photos = fetchPhotos()
+                val photos = fetchPhotos(term = term)
                 _uiState.compareAndSet(_uiState.value, SearchScreenUiState.Done(photos))
             } catch (t: Throwable) {
                 _uiState.compareAndSet(_uiState.value, SearchScreenUiState.Done(flowOf(PagingData.empty())))
