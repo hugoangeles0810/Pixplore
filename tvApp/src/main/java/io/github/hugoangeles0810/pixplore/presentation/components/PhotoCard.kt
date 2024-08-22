@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,6 +25,7 @@ import androidx.tv.material3.CompactCard
 import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Text
 import coil.compose.AsyncImage
+import io.github.hugoangeles0810.pixplore.R
 import io.github.hugoangeles0810.pixplore.presentation.theme.PixploreTheme
 
 private const val CARD_ASPECT_RATIO = 16f / 9f
@@ -61,6 +63,8 @@ fun PhotoCard(
                 model = url,
                 contentDescription = user,
                 contentScale = ContentScale.Crop,
+                placeholder = painterResource(id = R.drawable.photo_placeholder),
+                error = painterResource(id = R.drawable.photo_placeholder),
                 modifier = Modifier
                     .fillMaxSize()
             )
