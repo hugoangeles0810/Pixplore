@@ -1,4 +1,4 @@
-package io.github.hugoangeles0810.pixplore.presentation.screens.home
+package io.github.hugoangeles0810.pixplore.presentation.screens.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,35 +10,33 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class SearchViewModel @Inject constructor(
     private val fetchPhotos: FetchPhotos
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<HomeScreenUiState>(HomeScreenUiState.Loading)
-    val uiState: StateFlow<HomeScreenUiState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow<SearchScreenUiState>(SearchScreenUiState.Done(flowOf(PagingData.empty())))
+    val uiState: StateFlow<SearchScreenUiState> = _uiState.asStateFlow()
 
-    fun initialize() {
+    fun query(term: String) {
         viewModelScope.launch {
             try {
                 val photos = fetchPhotos()
-                _uiState.compareAndSet(_uiState.value, HomeScreenUiState.Ready(photos))
-            } catch (t : Throwable) {
-                _uiState.compareAndSet(_uiState.value, HomeScreenUiState.Error)
+                _uiState.compareAndSet(_uiState.value, SearchScreenUiState.Done(photos))
+            } catch (t: Throwable) {
+                _uiState.compareAndSet(_uiState.value, SearchScreenUiState.Done(flowOf(PagingData.empty())))
             }
         }
     }
-
 }
 
-sealed interface HomeScreenUiState {
-
-    data object Loading : HomeScreenUiState
-    data object Error : HomeScreenUiState
-    data class Ready(
+sealed interface SearchScreenUiState {
+    data object Loading : SearchScreenUiState
+    data class Done(
         val photos: Flow<PagingData<Photo>>
-    ) : HomeScreenUiState
+    ): SearchScreenUiState
 }
