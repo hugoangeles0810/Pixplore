@@ -1,18 +1,33 @@
 package io.github.hugoangeles0810.pixplore.presentation.screens.search
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.tv.material3.Text
+import io.github.hugoangeles0810.pixplore.presentation.components.SearchBar
 
 @Composable
 fun SearchScreen() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+
+    var searchQuery by remember { mutableStateOf("") }
+
+    Column(
+        modifier = Modifier.fillMaxSize()
     ) {
-        Text(text = "Search")
+        SearchBar(
+            searchQuery = searchQuery,
+            onValueChange = { newQuery -> searchQuery = newQuery },
+            onSearch = { term ->
+
+            }
+        )
+        Box(modifier = Modifier.fillMaxSize()) {
+
+        }
     }
 }
