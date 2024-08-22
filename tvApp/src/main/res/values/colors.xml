@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="jetstream_background">#1A1C1E</color>
+    <color name="pixplore_background">#1A1C1E</color>
     <color name="primary">#A8C8FF</color>
     <color name="onPrimary">#003062</color>
     <color name="primaryContainer">#00468A</color>
