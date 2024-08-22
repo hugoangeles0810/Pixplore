@@ -6,9 +6,9 @@ import retrofit2.http.Query
 
 interface UnplashApiClient {
 
-    @GET("photos/random")
+    @GET("photos")
     suspend fun fetchRandomPhotos(
-        @Query("orientation") orientation: String,
-        @Query("count") count: Int
+        @Query("per_page") count: Int,
+        @Query("page") page: Int
     ): List<PhotoDTO>
 }

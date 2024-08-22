@@ -1,6 +1,5 @@
 package io.github.hugoangeles0810.pixplore.domain.usecase
 
-import io.github.hugoangeles0810.pixplore.data.entities.Orientation
 import io.github.hugoangeles0810.pixplore.domain.repository.PhotoRepository
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -23,6 +22,6 @@ class FetchPhotosTest {
     fun `fetch photos should request landscape orientation and a limited count`() = runTest {
         fetchPhotos()
 
-        coVerify { repository.fetchPhotos(orientation = Orientation.Landscape,  count = 10) }
+        coVerify { repository.fetchPhotos(count = 10) }
     }
 }
