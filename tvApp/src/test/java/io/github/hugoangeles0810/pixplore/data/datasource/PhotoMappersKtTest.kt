@@ -1,10 +1,11 @@
 package io.github.hugoangeles0810.pixplore.data.datasource
 
 import io.github.hugoangeles0810.pixplore.data.datasource.dtos.PhotoDTO
+import io.github.hugoangeles0810.pixplore.data.mappers.toEntity
 import org.junit.Assert.*
 import org.junit.Test
 
-class MappersKtTest {
+class PhotoMappersKtTest {
 
     private val photoId = "id"
     private val photoUser = "user"

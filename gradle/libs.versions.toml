@@ -2,16 +2,16 @@
 agp = "8.5.2"
 kotlin = "2.0.0"
 coreKtx = "1.13.1"
-compose-bom = "2024.06.00"
+compose-bom = "2024.08.00"
 activity-compose = "1.9.1"
-tv-material = "1.0.0-rc02"
+tv-material = "1.0.0"
 navigation-compose = "2.7.7"
 hilt-navigation-compose = "1.2.0"
-compose-foundation = "1.7.0-beta02"
-compose-ui = "1.7.0-beta02"
-compose-runtime = "1.7.0-beta02"
+compose-foundation = "1.7.0-rc01"
+compose-ui = "1.7.0-rc01"
+compose-runtime = "1.7.0-rc01"
 coil-compose = "2.6.0"
-lifecycle-runtime-ktx = "2.8.1"
+lifecycle-runtime-ktx = "2.8.4"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
 hilt-android = "2.51.1"
@@ -20,6 +20,7 @@ mockk = "1.13.12"
 junit = "4.13.2"
 kotlin-coroutines = "1.8.1"
 paging = "3.3.2"
+desugaring = "2.0.4"
 
 
 
@@ -52,6 +53,7 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlin-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
 androidx-paging-runtime = { group = "androidx.paging", name="paging-runtime", version.ref = "paging" }
 androidx-paging-compose = { group = "androidx.paging", name="paging-compose", version.ref = "paging" }
+desugaring = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugaring" }
 
 
 [plugins]
