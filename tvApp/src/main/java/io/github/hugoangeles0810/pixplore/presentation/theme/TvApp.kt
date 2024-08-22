@@ -1,7 +1,10 @@
 package io.github.hugoangeles0810.pixplore.presentation.theme
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.derivedStateOf
@@ -25,6 +28,7 @@ import androidx.tv.material3.MaterialTheme
 import androidx.tv.material3.Tab
 import androidx.tv.material3.TabRow
 import androidx.tv.material3.Text
+import io.github.hugoangeles0810.pixplore.presentation.components.PixploreLogo
 import io.github.hugoangeles0810.pixplore.presentation.screens.Screens
 import io.github.hugoangeles0810.pixplore.presentation.screens.about.AboutScreen
 import io.github.hugoangeles0810.pixplore.presentation.screens.home.HomeScreen
@@ -80,26 +84,30 @@ private fun TopBar(
 ) {
     val focusManager = LocalFocusManager.current
 
-    TabRow(
-        modifier = modifier
-            .padding(bottom = 16.dp),
-        selectedTabIndex = selectedTabIndex
-    ) {
-        screens.forEachIndexed { index, screen ->
-            key(index) {
-                Tab(
-                    selected = index == selectedTabIndex,
-                    onFocus = { onScreenSelection(screen) },
-                    onClick = { focusManager.moveFocus(FocusDirection.Down) }
-                ) {
-                    Text(
-                        text = stringResource(id = screen.title),
-                        style = MaterialTheme.typography.titleSmall.copy(
-                            color = LocalContentColor.current
-                        ),
-                        modifier = Modifier
-                            .padding(horizontal = 16.dp)
-                    )
+    Row {
+        PixploreLogo(modifier = Modifier.width(100.dp))
+        Spacer(modifier = Modifier.width(58.dp))
+        TabRow(
+            modifier = modifier
+                .padding(bottom = 16.dp),
+            selectedTabIndex = selectedTabIndex
+        ) {
+            screens.forEachIndexed { index, screen ->
+                key(index) {
+                    Tab(
+                        selected = index == selectedTabIndex,
+                        onFocus = { onScreenSelection(screen) },
+                        onClick = { focusManager.moveFocus(FocusDirection.Down) }
+                    ) {
+                        Text(
+                            text = stringResource(id = screen.title),
+                            style = MaterialTheme.typography.titleSmall.copy(
+                                color = LocalContentColor.current
+                            ),
+                            modifier = Modifier
+                                .padding(horizontal = 16.dp)
+                        )
+                    }
                 }
             }
         }
