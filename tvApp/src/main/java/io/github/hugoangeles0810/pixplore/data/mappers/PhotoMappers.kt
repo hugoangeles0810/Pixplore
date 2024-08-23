@@ -7,7 +7,7 @@ import java.time.ZonedDateTime
 private val currentDateFormatter = DateFormatter()
 private const val TagsLimit = 3
 
-fun List<PhotoDTO>.toEntity(): List<Photo> {
+fun List<PhotoDTO>.photosDtoToEntity(): List<Photo> {
     return map { it.toEntity() }
 }
 

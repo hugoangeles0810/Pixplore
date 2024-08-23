@@ -2,7 +2,8 @@ package io.github.hugoangeles0810.pixplore.data.datasource
 
 import io.github.hugoangeles0810.pixplore.data.apiclient.UnplashApiClient
 import io.github.hugoangeles0810.pixplore.data.entities.Photo
-import io.github.hugoangeles0810.pixplore.data.mappers.toEntity
+import io.github.hugoangeles0810.pixplore.data.mappers.photosDtoToEntity
+import io.github.hugoangeles0810.pixplore.data.mappers.searchDtoToEntity
 import io.github.hugoangeles0810.pixplore.di.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -22,9 +23,9 @@ class RemotePhotoDatasource @Inject constructor(
     ): List<Photo> {
         return withContext(ioDispatcher) {
             if (term.isBlank())
-                apiClient.fetchPhotosFromEditorial(count, page).toEntity()
+                apiClient.fetchPhotosFromEditorial(count, page).photosDtoToEntity()
             else
-                apiClient.searchPhotos(term, count, page).toEntity()
+                apiClient.searchPhotos(term, count, page).searchDtoToEntity()
         }
     }
 }
