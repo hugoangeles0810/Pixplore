@@ -20,7 +20,7 @@ class PhotoMappersKtTest {
         val dto = PhotoDTO(
             id = photoId,
             createdAt =  photoCreatedAt,
-            urls = PhotoDTO.Urls(full = photoUrl),
+            urls = PhotoDTO.Urls(regular = photoUrl),
             user = PhotoDTO.User(username = photoUser)
         )
 

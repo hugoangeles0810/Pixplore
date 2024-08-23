@@ -14,7 +14,7 @@ fun List<PhotoDTO>.toEntity(): List<Photo> {
 fun PhotoDTO.toEntity(dateFormatter: DateFormatter = currentDateFormatter): Photo {
     return Photo(
         id = id,
-        url = urls.full.orEmpty(),
+        url = urls.regular.orEmpty(),
         username = user.username,
         createdAt = dateFormatter.relativeFormat(from = createdAt.toLocalDate()),
         tags = tags?.take(TagsLimit)?.joinToString(" • ") { it.title }
