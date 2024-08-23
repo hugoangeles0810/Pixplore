@@ -34,7 +34,7 @@ import io.github.hugoangeles0810.pixplore.presentation.screens.about.AboutScreen
 import io.github.hugoangeles0810.pixplore.presentation.screens.home.HomeScreen
 import io.github.hugoangeles0810.pixplore.presentation.screens.search.SearchScreen
 
-private val TopBarTabs = Screens.entries
+private val TopBarTabs = Screens.entries.toList()
 
 @Composable
 fun TvApp() {
@@ -67,6 +67,7 @@ fun TvApp() {
             selectedTabIndex = currentTopBarSelectedTabIndex
         ) { screen ->
             navController.navigate(screen.route) {
+                if (screen == TopBarTabs[0]) popUpTo(TopBarTabs[0].route)
                 launchSingleTop = true
             }
         }
