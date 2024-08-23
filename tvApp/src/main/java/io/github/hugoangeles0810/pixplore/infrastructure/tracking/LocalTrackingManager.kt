@@ -1,14 +1,10 @@
-package io.github.hugoangeles0810.pixplore.domain.manager
+package io.github.hugoangeles0810.pixplore.infrastructure.tracking
 
 import android.util.Log
+import io.github.hugoangeles0810.pixplore.domain.tracking.TrackingManager
 import javax.inject.Inject
 
 private const val TAG = "TrackingManager"
-
-interface TrackingManager {
-
-    fun send(event: String, params: Map<String, Any>)
-}
 
 class LocalTrackingManager @Inject constructor() : TrackingManager {
 
