@@ -36,5 +36,7 @@ unsplashApiKey="your access key here"
 [Apk Release](./apks/Pixplore-release.apk)
 
 ## Demo
-https://github.com/user-attachments/assets/e3196a0b-9907-4c76-8062-e9b6ab165a6d
+https://github.com/user-attachments/assets/6b0c401b-0ad9-459f-93ff-37e0caa864e0
+
+
 
