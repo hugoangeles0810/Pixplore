@@ -1,6 +1,6 @@
 package io.github.hugoangeles0810.pixplore.domain.usecase
 
-import io.github.hugoangeles0810.pixplore.domain.manager.TrackingManager
+import io.github.hugoangeles0810.pixplore.domain.tracking.TrackingManager
 import javax.inject.Inject
 
 private const val EVENT = "screen_loaded"
