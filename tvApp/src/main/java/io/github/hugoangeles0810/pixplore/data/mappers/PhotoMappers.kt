@@ -5,6 +5,7 @@ import io.github.hugoangeles0810.pixplore.data.entities.Photo
 import java.time.ZonedDateTime
 
 private val currentDateFormatter = DateFormatter()
+private const val TagsLimit = 3
 
 fun List<PhotoDTO>.toEntity(): List<Photo> {
     return map { it.toEntity() }
@@ -15,7 +16,8 @@ fun PhotoDTO.toEntity(dateFormatter: DateFormatter = currentDateFormatter): Phot
         id = id,
         url = urls.full.orEmpty(),
         username = user.username,
-        createdAt = dateFormatter.relativeFormat(from = createdAt.toLocalDate())
+        createdAt = dateFormatter.relativeFormat(from = createdAt.toLocalDate()),
+        tags = tags?.take(TagsLimit)?.joinToString(" • ") { it.title }
     )
 }
 

@@ -7,7 +7,8 @@ data class PhotoDTO(
     @SerializedName("created_at")
     val createdAt: String,
     val urls: Urls,
-    val user: User
+    val user: User,
+    val tags: List<Tag>? = null
 ) {
 
     data class Urls(
@@ -20,5 +21,9 @@ data class PhotoDTO(
 
     data class User(
         val username: String
+    )
+
+    data class Tag(
+        val title: String
     )
 }
