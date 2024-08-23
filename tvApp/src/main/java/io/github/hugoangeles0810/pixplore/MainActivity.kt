@@ -30,7 +30,9 @@ class MainActivity : ComponentActivity() {
                     CompositionLocalProvider(
                         LocalContentColor provides MaterialTheme.colorScheme.onSurface
                     ) {
-                        TvApp()
+                        TvApp(
+                            onBackPressed = onBackPressedDispatcher::onBackPressed
+                        )
                     }
                 }
             }
