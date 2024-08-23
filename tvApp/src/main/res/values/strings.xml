@@ -8,5 +8,9 @@
     <string name="loading_message">Loading …</string>
     <string name="error_message">Ops! Something went wrong.</string>
 
-    <string name="search_screen_et_placeholder">Discover the world one pixel at a time …</string>
+    <string name="search_screen_et_placeholder">Search pictures of cars, flowers, etc …</string>
+
+    <string name="about_screen_description">Discover the world one pixel at a time.</string>
+
+    <string name="about_screen_made_by">Made by @angeleshugo</string>
 </resources>
