@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Pixplore"
 include(":tvApp")
- 
+include(":benchmark")

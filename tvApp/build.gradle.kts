@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.baselineprofile)
 }
 
 val localProperties = gradleLocalProperties(rootDir, project.providers)
@@ -33,7 +34,9 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isDebuggable = true
+            signingConfig = signingConfigs.getByName("debug")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -51,6 +54,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.profileinstaller)
+    baselineProfile(project(":benchmark"))
+
     coreLibraryDesugaring(libs.desugaring)
     implementation(libs.androidx.compose.runtime.base)
 

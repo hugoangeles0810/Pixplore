@@ -35,6 +35,7 @@ class HomeViewModel @Inject constructor(
                 trackHomeLoaded()
                 trace.stop()
             } catch (t : Throwable) {
+                t.printStackTrace()
                 _uiState.compareAndSet(_uiState.value, HomeScreenUiState.Error)
             }
         }
