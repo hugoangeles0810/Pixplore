@@ -5,16 +5,20 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.tv.material3.Text
+import io.github.hugoangeles0810.pixplore.R
 import io.github.hugoangeles0810.pixplore.presentation.components.Error
 import io.github.hugoangeles0810.pixplore.presentation.components.Loading
 import io.github.hugoangeles0810.pixplore.presentation.components.PhotoGrid
@@ -35,7 +39,9 @@ fun SearchScreen(
             searchQuery = searchQuery,
             onValueChange = { newQuery -> searchQuery = newQuery },
             onSearch = { term ->
-                viewModel.query(term)
+                if (term.isNotEmpty()) {
+                    viewModel.query(term)
+                }
             }
         )
         Spacer(modifier = Modifier.height(20.dp))
@@ -49,7 +55,27 @@ fun SearchScreen(
                 }
                 is SearchScreenUiState.Done -> {
                     val lazyPagingItems = state.photos.collectAsLazyPagingItems()
-                    PhotoGrid(lazyPagingItems = lazyPagingItems)
+                    Column {
+
+                        if (state.term.isNotEmpty()) {
+                            if (lazyPagingItems.itemCount <= 0) {
+                                Text(
+                                    text = stringResource(id = R.string.search_screen_empty_results_for, state.term),
+                                    modifier = Modifier
+                                        .padding(bottom = 16.dp)
+                                )
+                            } else {
+                                Text(
+                                    text = stringResource(id = R.string.search_screen_results_for, state.term),
+                                    modifier = Modifier
+                                        .padding(bottom = 16.dp)
+                                )
+                            }
+                        }
+
+                        PhotoGrid(lazyPagingItems = lazyPagingItems)
+                    }
+
                 }
             }
         }
