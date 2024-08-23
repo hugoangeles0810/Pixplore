@@ -28,7 +28,12 @@ fun PhotoGrid(
     ) {
         items(lazyPagingItems.itemCount) { index ->
             lazyPagingItems[index]?.let {
-                PhotoCard(user = it.username, createdAt = it.createdAt, url = it.url)
+                PhotoCard(
+                    user = it.username,
+                    createdAt = it.createdAt,
+                    tags = it.tags,
+                    url = it.url
+                )
             }
         }
 

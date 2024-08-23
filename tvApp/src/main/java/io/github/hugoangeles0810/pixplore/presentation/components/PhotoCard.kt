@@ -37,6 +37,7 @@ fun PhotoCard(
     itemWidth: Dp = 268.dp,
     user: String,
     createdAt: String,
+    tags: String? = null,
     url: String,
     onClick: () -> Unit = {}
 ) {
@@ -70,29 +71,38 @@ fun PhotoCard(
             )
         },
         title = {
-            Column {
+            Column(
+                modifier = Modifier
+                    .padding(
+                        horizontal = 24.dp
+                    )
+                    .padding(bottom = 24.dp)
+            ) {
                 Text(
                     text = user,
                     style = MaterialTheme.typography.headlineSmall,
                     overflow = TextOverflow.Ellipsis,
                     minLines = SINGLE_LINE,
-                    maxLines = SINGLE_LINE,
-                    modifier = Modifier.padding(
-                        start = 24.dp,
-                        end = 24.dp
-                    )
+                    maxLines = SINGLE_LINE
                 )
                 Text(
                     text = createdAt,
+                    style = MaterialTheme.typography.labelLarge,
                     minLines = SINGLE_LINE,
                     maxLines = SINGLE_LINE,
                     modifier = Modifier
                         .graphicsLayer { alpha = 0.6f }
-                        .padding(
-                            start = 24.dp,
-                            bottom = 24.dp
-                        )
                 )
+                tags?.let {
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.labelSmall,
+                        minLines = SINGLE_LINE,
+                        maxLines = SINGLE_LINE,
+                        modifier = Modifier
+                            .graphicsLayer { alpha = 0.8f }
+                    )
+                }
             }
         }
     )
@@ -106,6 +116,7 @@ private fun PhotoCardPreview() {
             PhotoCard(
                 user = "Title",
                 createdAt = "01/01/1992",
+                tags = "cars • speed",
                 url = ""
             )
         }
