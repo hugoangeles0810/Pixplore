@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.hugoangeles0810.pixplore.data.entities.Photo
 import io.github.hugoangeles0810.pixplore.domain.usecase.FetchPhotos
+import io.github.hugoangeles0810.pixplore.domain.usecase.TrackHomeLoaded
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val fetchPhotos: FetchPhotos
+    private val fetchPhotos: FetchPhotos,
+    private val trackHomeLoaded: TrackHomeLoaded
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<HomeScreenUiState>(HomeScreenUiState.Loading)
@@ -26,6 +28,7 @@ class HomeViewModel @Inject constructor(
             try {
                 val photos = fetchPhotos()
                 _uiState.compareAndSet(_uiState.value, HomeScreenUiState.Ready(photos))
+                trackHomeLoaded()
             } catch (t : Throwable) {
                 _uiState.compareAndSet(_uiState.value, HomeScreenUiState.Error)
             }
