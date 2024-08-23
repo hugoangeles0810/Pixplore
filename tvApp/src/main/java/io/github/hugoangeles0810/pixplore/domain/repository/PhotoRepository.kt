@@ -6,18 +6,20 @@ import androidx.paging.PagingData
 import io.github.hugoangeles0810.pixplore.data.datasource.PhotoDatasource
 import io.github.hugoangeles0810.pixplore.data.datasource.PhotoPagingSource
 import io.github.hugoangeles0810.pixplore.data.entities.Photo
+import io.github.hugoangeles0810.pixplore.domain.crashreporting.ErrorReporter
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class PhotoRepository @Inject constructor(
-    private val datasource: PhotoDatasource
+    private val datasource: PhotoDatasource,
+    private val errorReporter: ErrorReporter
 ) {
 
     fun fetchPhotos(term: String, count: Int): Flow<PagingData<Photo>> {
         return Pager(
             config = PagingConfig(pageSize = count, prefetchDistance = 3),
             pagingSourceFactory = {
-                PhotoPagingSource(datasource, term, count)
+                PhotoPagingSource(datasource, term, count, errorReporter)
             }
         ).flow
     }

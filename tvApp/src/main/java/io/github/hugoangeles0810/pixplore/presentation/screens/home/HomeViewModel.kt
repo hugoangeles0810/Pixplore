@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.hugoangeles0810.pixplore.data.entities.Photo
+import io.github.hugoangeles0810.pixplore.domain.crashreporting.ErrorReporter
 import io.github.hugoangeles0810.pixplore.domain.performance.PerformanceTracer
 import io.github.hugoangeles0810.pixplore.domain.usecase.FetchPhotos
 import io.github.hugoangeles0810.pixplore.domain.usecase.TrackHomeLoaded
@@ -19,7 +20,8 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val fetchPhotos: FetchPhotos,
     private val trackHomeLoaded: TrackHomeLoaded,
-    private val performanceTracer: PerformanceTracer
+    private val performanceTracer: PerformanceTracer,
+    private val errorReporter: ErrorReporter
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<HomeScreenUiState>(HomeScreenUiState.Loading)
@@ -35,7 +37,7 @@ class HomeViewModel @Inject constructor(
                 trackHomeLoaded()
                 trace.stop()
             } catch (t : Throwable) {
-                t.printStackTrace()
+                errorReporter.report(t, handled = true)
                 _uiState.compareAndSet(_uiState.value, HomeScreenUiState.Error)
             }
         }

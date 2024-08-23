@@ -3,11 +3,13 @@ package io.github.hugoangeles0810.pixplore.data.datasource
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import io.github.hugoangeles0810.pixplore.data.entities.Photo
+import io.github.hugoangeles0810.pixplore.domain.crashreporting.ErrorReporter
 
 class PhotoPagingSource(
     private val photoDatasource: PhotoDatasource,
     private val term: String,
-    private val pageSize: Int
+    private val pageSize: Int,
+    private val errorReporter: ErrorReporter
 ) : PagingSource<Int, Photo>() {
 
     override fun getRefreshKey(state: PagingState<Int, Photo>): Int? {
@@ -24,6 +26,7 @@ class PhotoPagingSource(
                 nextKey = (currentPage + 1).takeIf { photos.isNotEmpty() }
             )
         } catch (exception: Exception) {
+            errorReporter.report(exception, handled = true)
             LoadResult.Error(exception)
         }
     }
