@@ -21,6 +21,7 @@ junit = "4.13.2"
 kotlin-coroutines = "1.8.1"
 paging = "3.3.2"
 desugaring = "2.0.4"
+core-splashscreen = "1.0.1"
 
 
 
@@ -54,6 +55,7 @@ kotlin-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coro
 androidx-paging-runtime = { group = "androidx.paging", name="paging-runtime", version.ref = "paging" }
 androidx-paging-compose = { group = "androidx.paging", name="paging-compose", version.ref = "paging" }
 desugaring = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "desugaring" }
+androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "core-splashscreen" }
 
 
 [plugins]
