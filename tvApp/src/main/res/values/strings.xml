@@ -9,6 +9,8 @@
     <string name="error_message">Ops! Something went wrong.</string>
 
     <string name="search_screen_et_placeholder">Search pictures of cars, flowers, etc …</string>
+    <string name="search_screen_results_for">Search results for \"%s\":</string>
+    <string name="search_screen_empty_results_for">No search results for \"%s\"</string>
 
     <string name="about_screen_description">Discover the world one pixel at a time.</string>
 

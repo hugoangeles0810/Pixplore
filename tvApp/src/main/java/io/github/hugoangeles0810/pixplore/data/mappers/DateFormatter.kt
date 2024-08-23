@@ -20,8 +20,11 @@ class DateFormatter(
             months > 0 -> {
                 "$months month${"s".takeUnless { months == 1 }.orEmpty()} ago"
             }
-            else -> {
+            days > 0 -> {
                 "$days day${"s".takeUnless { days == 1 }.orEmpty()} ago"
+            }
+            else -> {
+                "Today"
             }
         }
     }

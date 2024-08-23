@@ -91,7 +91,7 @@ fun PhotoCard(
                     minLines = SINGLE_LINE,
                     maxLines = SINGLE_LINE,
                     modifier = Modifier
-                        .graphicsLayer { alpha = 0.6f }
+                        .graphicsLayer { alpha = 0.8f }
                 )
                 tags?.let {
                     Text(
@@ -100,7 +100,7 @@ fun PhotoCard(
                         minLines = SINGLE_LINE,
                         maxLines = SINGLE_LINE,
                         modifier = Modifier
-                            .graphicsLayer { alpha = 0.8f }
+                            .graphicsLayer { alpha = 0.6f }
                     )
                 }
             }

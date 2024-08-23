@@ -19,7 +19,7 @@ class SearchViewModel @Inject constructor(
     private val fetchPhotos: FetchPhotos
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<SearchScreenUiState>(SearchScreenUiState.Done(flowOf(PagingData.empty())))
+    private val _uiState = MutableStateFlow<SearchScreenUiState>(SearchScreenUiState.Done("", flowOf(PagingData.empty())))
     val uiState: StateFlow<SearchScreenUiState> = _uiState.asStateFlow()
 
     fun query(term: String) {
@@ -27,7 +27,7 @@ class SearchViewModel @Inject constructor(
             try {
                 _uiState.compareAndSet(_uiState.value, SearchScreenUiState.Loading)
                 val photos = fetchPhotos(term = term)
-                _uiState.compareAndSet(_uiState.value, SearchScreenUiState.Done(photos))
+                _uiState.compareAndSet(_uiState.value, SearchScreenUiState.Done(term, photos))
             } catch (t: Throwable) {
                 _uiState.compareAndSet(_uiState.value, SearchScreenUiState.Error)
             }
@@ -39,6 +39,7 @@ sealed interface SearchScreenUiState {
     data object Loading : SearchScreenUiState
     data object Error : SearchScreenUiState
     data class Done(
+        val term: String,
         val photos: Flow<PagingData<Photo>>
     ): SearchScreenUiState
 }
