@@ -39,9 +39,7 @@ fun PhotoGrid(
 
         lazyPagingItems.apply {
             if (loadState.append is LoadState.Loading) {
-                item {
-                    NextPhotosPageSkeleton(columns = Columns)
-                }
+                nextPhotosPageSkeleton(columns = Columns)
             }
         }
     }
